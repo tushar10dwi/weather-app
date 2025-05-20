@@ -7,7 +7,8 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  /* background: linear-gradient(135deg, #74ebd5, #ACB6E5); */
+  background-image: url("./pexels-pixabay-76969.jpg");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +92,8 @@ input:checked + .slider::before {
 }
 
 .weather-card {
-  background: white;
+  /* background: white; */
+  backdrop-filter: blur(50px);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);

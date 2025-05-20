@@ -57,8 +57,8 @@ function createWeatherCard(address,icon,temp,weather,humid,wind) {
 
 }
 
-async function getWeatherDetails() {
-    const request = await fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/mumbai?unitGroup=metric&key=RQKLNMNFNXFB4SG7WS4FAHCXB&contentType=json", {
+async function getWeatherDetails(place) {
+    const request = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${place}?unitGroup=metric&key=RQKLNMNFNXFB4SG7WS4FAHCXB&contentType=json`, {
     "method": "GET",
     "mode":"cors",
     "headers": {
@@ -93,9 +93,20 @@ async function getWeatherDetails() {
 
 }
 
-getWeatherDetails();
+getWeatherDetails('mumbai');
 
-const search = document.querySelector(".search-button");
-search.addEventListener('click', ()=> {
-    getWeatherDetails();
+const submit = document.querySelector("button");
+
+submit.addEventListener('click', ()=> {
+    const place = document.getElementById('place');
+    getWeatherDetails(place.value);
+    console.log(place.value);
 })
+
+place.addEventListener('keypress',(event) => {
+    if (event.key == "Enter") {
+        event.preventDefault();
+        const place = document.getElementById('place');
+        getWeatherDetails(place.value);
+        console.log(place.value);
+    }})
